@@ -11,7 +11,7 @@ A simple web tool to help build Korean search queries for MapleStory boss fight 
 - Copy to clipboard functionality
 
 ## Usage
-Visit the GitHub Pages site: [MapleStory Korean Search Query Builder](https://YOUR_GITHUB_USERNAME.github.io/maplestory-query-builder/)
+Visit the GitHub Pages site: [MapleStory Korean Search Query Builder](https://mafhcow.github.io/maplestory-query-builder/)
 
 Or run locally:
 1. Clone this repository
