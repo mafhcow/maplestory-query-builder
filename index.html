@@ -66,6 +66,34 @@
             box-shadow: 0 0 0 3px rgba(52,152,219,0.1);
         }
 
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+            color: #2c3e50;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52,152,219,0.1);
+        }
+
+        /* Remove number input spinners */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
         .checkbox-group {
             display: flex;
             gap: 20px;
@@ -83,6 +111,28 @@
         }
 
         .checkbox-label input[type="checkbox"] {
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .radio-label input[type="radio"] {
             margin-right: 8px;
             width: 18px;
             height: 18px;
@@ -181,32 +231,58 @@
         </div>
 
         <div class="form-group">
-            <label for="difficultySelect">Difficulty</label>
-            <select id="difficultySelect">
-                <option value="이지">Easy (이지)</option>
-                <option value="노말">Normal (노말)</option>
-                <option value="하드">Hard (하드)</option>
-                <option value="카오스">Chaos (카오스)</option>
-                <option value="익스트림">Extreme (익스트림)</option>
-            </select>
+            <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="contentType" value="" checked>
+                    Bossing
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="contentType" value="수로">
+                    Culvert (수로)
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="contentType" value="무릉">
+                    Dojo (무릉)
+                </label>
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="bossSelect">Boss</label>
-            <select id="bossSelect"></select>
+        <div id="dojoOptions" style="display: none;">
+            <div class="form-group">
+                <label for="targetFloor">Target Floor</label>
+                <input type="number" id="targetFloor" min="1" placeholder="Enter floor number">
+            </div>
         </div>
 
-        <div class="form-group">
-            <div class="checkbox-group">
-                <label class="checkbox-label">
-                    <input type="checkbox" id="soloCheck">
-                    Solo (솔플)
-                </label>
-                
-                <label class="checkbox-label">
-                    <input type="checkbox" id="lowStatCheck">
-                    Low stat clear (최소컷)
-                </label>
+        <div id="bossOptions">
+            <div class="form-group">
+                <label for="difficultySelect">Difficulty</label>
+                <select id="difficultySelect">
+                    <option value="이지">Easy (이지)</option>
+                    <option value="노말">Normal (노말)</option>
+                    <option value="하드">Hard (하드)</option>
+                    <option value="카오스">Chaos (카오스)</option>
+                    <option value="익스트림">Extreme (익스트림)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bossSelect">Boss</label>
+                <select id="bossSelect"></select>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="soloCheck">
+                        Solo (솔플)
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="lowStatCheck">
+                        Low stat clear (최소컷)
+                    </label>
+                </div>
             </div>
         </div>
 

@@ -105,6 +105,10 @@ window.onload = function() {
     const difficultySelect = document.getElementById('difficultySelect');
     const soloCheck = document.getElementById('soloCheck');
     const lowStatCheck = document.getElementById('lowStatCheck');
+    const bossOptions = document.getElementById('bossOptions');
+    const dojoOptions = document.getElementById('dojoOptions');
+    const contentTypeRadios = document.getElementsByName('contentType');
+    const targetFloor = document.getElementById('targetFloor');
 
     // Add event listeners for dynamic updates
     classSelect.addEventListener('change', generateQuery);
@@ -112,6 +116,17 @@ window.onload = function() {
     difficultySelect.addEventListener('change', generateQuery);
     soloCheck.addEventListener('change', generateQuery);
     lowStatCheck.addEventListener('change', generateQuery);
+    targetFloor.addEventListener('input', generateQuery);
+    
+    // Add event listeners for radio buttons
+    contentTypeRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            const isDojo = this.value === '무릉';
+            bossOptions.style.display = this.value ? 'none' : 'block';
+            dojoOptions.style.display = isDojo ? 'block' : 'none';
+            generateQuery();
+        });
+    });
 
     // Populate class select
     for (const category in classes) {
@@ -155,15 +170,28 @@ function generateQuery() {
     const bossName = document.getElementById('bossSelect').value;
     const isSolo = document.getElementById('soloCheck').checked;
     const isLowStat = document.getElementById('lowStatCheck').checked;
+    const contentType = document.querySelector('input[name="contentType"]:checked').value;
+    const targetFloor = document.getElementById('targetFloor').value.trim();
 
     let query = '';
     
-    // Only add terms if they are selected (value is not empty)
+    // Add class name first
     if (className) query += className;
-    if (difficulty) query += (query ? ' ' : '') + difficulty;
-    if (bossName) query += (query ? ' ' : '') + bossName;
-    if (isSolo) query += ' 솔플';
-    if (isLowStat) query += ' 최소컷';
+
+    // If content type is selected (Culvert or Dojo), append it
+    if (contentType) {
+        query += (query ? ' ' : '') + contentType;
+        // Add floor number for Dojo if specified
+        if (contentType === '무릉' && targetFloor) {
+            query += ' ' + targetFloor + '층';
+        }
+    } else {
+        // Only add boss-related terms if no special content type is selected
+        if (difficulty) query += (query ? ' ' : '') + difficulty;
+        if (bossName) query += (query ? ' ' : '') + bossName;
+        if (isSolo) query += ' 솔플';
+        if (isLowStat) query += ' 최소컷';
+    }
 
     document.getElementById('queryResult').textContent = query;
     
