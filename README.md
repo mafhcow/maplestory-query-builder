@@ -1,6 +1,6 @@
 # MapleStory Korean Search Query Builder
 
-A simple web tool to help build Korean search queries for MapleStory boss fight videos on YouTube.
+A simple web tool to help build Korean search queries for MapleStory boss fight videos on YouTube. I didn't write a single line of code for this tool, it was built completely using [Windsurf](https://windsurf.ai/). Try it out for free today!
 
 ## Features
 - Select class names with their Korean translations
@@ -19,3 +19,6 @@ Or run locally:
 
 ## Contributing
 Feel free to open issues or submit pull requests for any improvements.
+
+## Acknowledgments
+Thanks to [Minastory's document](https://docs.google.com/document/d/1lnXJyTuZhBwdNTHOagBO_Gi0JS2Ic8L14sos0kQHML8/edit) for providing the Korean translations used in this tool.
