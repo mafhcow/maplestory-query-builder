@@ -105,6 +105,7 @@ window.onload = function() {
     const difficultySelect = document.getElementById('difficultySelect');
     const soloCheck = document.getElementById('soloCheck');
     const lowStatCheck = document.getElementById('lowStatCheck');
+    const legionChampionCheck = document.getElementById('legionChampionCheck');
     const bossOptions = document.getElementById('bossOptions');
     const dojoOptions = document.getElementById('dojoOptions');
     const contentTypeRadios = document.getElementsByName('contentType');
@@ -116,6 +117,7 @@ window.onload = function() {
     difficultySelect.addEventListener('change', generateQuery);
     soloCheck.addEventListener('change', generateQuery);
     lowStatCheck.addEventListener('change', generateQuery);
+    legionChampionCheck.addEventListener('change', generateQuery);
     targetFloor.addEventListener('input', generateQuery);
     
     // Add event listeners for radio buttons
@@ -170,6 +172,7 @@ function generateQuery() {
     const bossName = document.getElementById('bossSelect').value;
     const isSolo = document.getElementById('soloCheck').checked;
     const isLowStat = document.getElementById('lowStatCheck').checked;
+    const isLegionChampion = document.getElementById('legionChampionCheck').checked;
     const contentType = document.querySelector('input[name="contentType"]:checked').value;
     const targetFloor = document.getElementById('targetFloor').value.trim();
 
@@ -191,6 +194,7 @@ function generateQuery() {
         if (bossName) query += (query ? ' ' : '') + bossName;
         if (isSolo) query += ' 솔플';
         if (isLowStat) query += ' 최소컷';
+        if (isLegionChampion) query += ' 유니온 챔피언';
     }
 
     document.getElementById('queryResult').textContent = query;
