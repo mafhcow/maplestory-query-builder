@@ -87,7 +87,8 @@ const bosses = {
         'Seren': ['세렌'],
         'Kalos': ['칼로스'],
         'Kaling': ['카링'],
-        'Limbo': ['림보']
+        'Limbo': ['림보'],
+        'Baldrix': ['발드릭스']
     }
 };
 
