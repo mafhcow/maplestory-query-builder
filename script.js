@@ -55,7 +55,8 @@ const classes = {
     },
     'Anima': {
         'Hoyoung': ['호영'],
-        'Lara': ['라라']
+        'Lara': ['라라'],
+        'Len': ['렌'],
     },
     'Others': {
         'Kinesis': ['키네시스', '키네'],
