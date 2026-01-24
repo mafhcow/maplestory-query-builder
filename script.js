@@ -91,18 +91,20 @@ const bosses = {
         'Limbo': ['림보'],
         'Baldrix': ['발드릭스'],
         'Adversary': ['대적자'],
+        'Kai': ['카이'],
+        'Brilliant Star': ['찬란한 흉성'],
     }
 };
 
 // Helper function to find shortest translation
 function getShortestTranslation(translations) {
-    return translations.reduce((shortest, current) => 
+    return translations.reduce((shortest, current) =>
         current.length < shortest.length ? current : shortest
     );
 }
 
 // Initialize selects when page loads
-window.onload = function() {
+window.onload = function () {
     const classSelect = document.getElementById('classSelect');
     const bossSelect = document.getElementById('bossSelect');
     const difficultySelect = document.getElementById('difficultySelect');
@@ -122,10 +124,10 @@ window.onload = function() {
     lowStatCheck.addEventListener('change', generateQuery);
     legionChampionCheck.addEventListener('change', generateQuery);
     targetFloor.addEventListener('input', generateQuery);
-    
+
     // Add event listeners for radio buttons
     contentTypeRadios.forEach(radio => {
-        radio.addEventListener('change', function() {
+        radio.addEventListener('change', function () {
             const isDojo = this.value === '무릉';
             bossOptions.style.display = this.value ? 'none' : 'block';
             dojoOptions.style.display = isDojo ? 'block' : 'none';
@@ -137,7 +139,7 @@ window.onload = function() {
     for (const category in classes) {
         const optgroup = document.createElement('optgroup');
         optgroup.label = category;
-        
+
         for (const className in classes[category]) {
             const option = document.createElement('option');
             const shortestTranslation = getShortestTranslation(classes[category][className]);
@@ -145,7 +147,7 @@ window.onload = function() {
             option.text = `${className} (${shortestTranslation})`;
             optgroup.appendChild(option);
         }
-        
+
         classSelect.appendChild(optgroup);
     }
 
@@ -153,7 +155,7 @@ window.onload = function() {
     for (const category in bosses) {
         const optgroup = document.createElement('optgroup');
         optgroup.label = category;
-        
+
         for (const bossName in bosses[category]) {
             const option = document.createElement('option');
             const shortestTranslation = getShortestTranslation(bosses[category][bossName]);
@@ -161,7 +163,7 @@ window.onload = function() {
             option.text = `${bossName} (${shortestTranslation})`;
             optgroup.appendChild(option);
         }
-        
+
         bossSelect.appendChild(optgroup);
     }
 
@@ -180,7 +182,7 @@ function generateQuery() {
     const targetFloor = document.getElementById('targetFloor').value.trim();
 
     let query = '';
-    
+
     // Add class name first
     if (className) query += className;
 
@@ -201,7 +203,7 @@ function generateQuery() {
     }
 
     document.getElementById('queryResult').textContent = query;
-    
+
     // Update YouTube link
     const youtubeQuery = encodeURIComponent(query);
     const youtubeLink = document.getElementById('youtubeLink');
