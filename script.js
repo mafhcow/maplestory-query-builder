@@ -93,6 +93,7 @@ const bosses = {
         'Adversary': ['대적자'],
         'Kai': ['카이'],
         'Brilliant Star': ['찬란한 흉성'],
+        'Jupiter': ['유피테르'],
     }
 };
 
