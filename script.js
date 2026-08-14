@@ -94,6 +94,7 @@ const bosses = {
         'Kai': ['카이'],
         'Brilliant Star': ['찬란한 흉성'],
         'Jupiter': ['유피테르'],
+        'Bellona': ['벨로나']
     }
 };
 
